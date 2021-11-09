@@ -1,9 +1,9 @@
-import React from "react";
+import React, { useState } from "react";
 import { Card, Badge, Button } from "react-bootstrap";
 
-import ReactMarkdown from "react-markdown";
 
 const Job = ({ job }) => {
+  const [clicked, setClicked] = useState(false);
   return (
     <Card border="dark" className="mt-4 mb-4">
       <Card.Body>
@@ -18,10 +18,46 @@ const Job = ({ job }) => {
             <Card.Subtitle className="text-muted mb-2">
               {new Date(job.date_posted).toLocaleDateString()}
             </Card.Subtitle>
-            <Badge varient="secondary" className="mr-2">
+            <Badge bg="dark" className="mr-2">
               {job.location}
             </Badge>
-            <Button className="mt-2" style={{display:"block", width:"100px"}} href={job.detail_url} variant="primary" size="sm" >Apply Here</Button>
+            <Button
+              className="mt-2 mb-2"
+              style={{ display: "block", width: "100px" }}
+              href={job.detail_url}
+              target="_blank"
+              
+              variant="primary"
+              size="sm"
+            >
+              Apply Here
+            </Button>
+
+            {clicked ? (
+              <>
+                <Card.Text>
+                  <Button
+                    onClick={() => setClicked(false)}
+                    variant="primary"
+                    size="sm"
+                  >
+                    Show lesser Details
+                  </Button>
+                </Card.Text>
+
+                <div className="mt-4">{job.description}</div>
+              </>
+            ) : (
+              <Card.Text>
+                <Button
+                  onClick={() => setClicked(true)}
+                  variant="primary"
+                  size="sm"
+                >
+                  View More Details
+                </Button>
+              </Card.Text>
+            )}
           </div>
         </div>
       </Card.Body>

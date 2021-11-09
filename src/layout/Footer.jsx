@@ -6,7 +6,7 @@ const Footer = () => {
     <div>
       <Navbar expand="lg" bg="dark" variant="dark" fixed="bottom">
         <div className="footer-content">
-            Find and apply for jobs quickly
+          &copy; 2021 Find and apply for jobs quickly -- By Nithin Valiyaveedu
         </div>
       </Navbar>
     </div>
