@@ -9,7 +9,7 @@ const Header = () => {
     <>
       <Navbar expand="lg" bg="dark" variant="dark">
         <Container>
-          <Navbar.Brand href="#home">LinkedIn Job Search App</Navbar.Brand>
+          <Navbar.Brand href="#home">Job Search App</Navbar.Brand>
           <Form className="d-flex">
             <FormControl
               type="search"

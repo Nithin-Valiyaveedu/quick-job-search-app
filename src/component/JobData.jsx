@@ -1,19 +1,26 @@
-import React from 'react'
-import { Container } from 'react-bootstrap'
-import FetchJobs from '../FetchJobs'
-
+import React, { useState } from "react";
+import { Container } from "react-bootstrap";
+import FetchJobs from "../FetchJobs";
+import Job from "./Job";
 
 const JobData = () => {
-    const {jobs,loading,error } = FetchJobs()
-    
-    return (
-       <Container>
-            {loading ? (<h1>Loading...</h1>):(<h1>{jobs.length}</h1>)}
-            {error ? (<h1>Try Refreshing again...</h1>): null }
-       </Container>
-           
-      
-    )
-}
+  const [params, setParams] = useState({});
+  const [page, setPage] = useState(1);
+  const { jobs, loading, error } = FetchJobs();
+  const allJobs = jobs["jobs"];
+  return (
+    <Container>
+      {loading ? (
+        <h1>Loading data...</h1>
+      ) : (
+        allJobs.map((job, index) => {
+          return(
+              <Job key={index} job={job} />)
+        })
+      )}
+      {error ? <h1>Try Refreshing again...</h1> : null}
+    </Container>
+  );
+};
 
-export default JobData
+export default JobData;
